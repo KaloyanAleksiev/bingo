@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminBingoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [AdminBingoController::class, 'index']);
+Route::post('/bingo/call-next-number', [AdminBingoController::class, 'callNextNumber'])->name('bingo.callNextNumber');
+Route::post('/bingo/reset', [AdminBingoController::class, 'resetBingo'])->name('bingo.reset');
